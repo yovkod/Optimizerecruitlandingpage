@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Optimize Financial — Build a Career That Pays You Forever</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #f5f5f2; color: #1a1a1a; min-height: 100vh; padding: 2rem 1rem; }
+    .lp-wrap { max-width: 820px; margin: 0 auto; }
+
+    /* Hero */
+    .hero { background: #0C447C; color: #E6F1FB; padding: 3.5rem 2.5rem 3rem; border-radius: 16px; margin-bottom: 2rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: #185FA5; opacity: 0.4; }
+    .hero::after { content: ''; position: absolute; bottom: -80px; left: 45%; width: 220px; height: 220px; border-radius: 50%; background: #042C53; opacity: 0.5; }
+    .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: #85B7EB; margin-bottom: 1rem; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; position: relative; z-index: 1; }
+    .hero h1 span { color: #FAC775; }
+    .hero-sub { font-size: 1rem; color: #B5D4F4; line-height: 1.65; max-width: 500px; margin-bottom: 1.75rem; position: relative; z-index: 1; }
+    .hero-cta { display: inline-block; background: #FAC775; color: #412402; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; padding: 14px 30px; border-radius: 8px; text-decoration: none; border: none; cursor: pointer; position: relative; z-index: 1; transition: background 0.2s; }
+    .hero-cta:hover { background: #EF9F27; }
+    .hero-note { font-size: 12px; color: #85B7EB; margin-top: 12px; position: relative; z-index: 1; }
+
+    /* Stats */
+    .stats-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin-bottom: 2rem; }
+    .stat-card { background: #fff; border-radius: 8px; padding: 1.25rem; text-align: center; border: 1px solid #e8e6df; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #185FA5; }
+    .stat-label { font-size: 12px; color: #444; margin-top: 4px; line-height: 1.4; }
+
+    .section { margin-bottom: 2.25rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; color: #111; }
+    .section-sub { font-size: 14px; color: #555; margin-bottom: 1.25rem; }
+
+    /* Career path */
+    .path-steps { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .path-step { background: #f0ede6; padding: 1.25rem 1rem; text-align: center; border: 1px solid #dddad3; }
+    .path-step:first-child { border-radius: 8px 0 0 8px; }
+    .path-step:last-child { border-radius: 0 8px 8px 0; }
+    .path-step-num { width: 30px; height: 30px; border-radius: 50%; background: #E6F1FB; color: #185FA5; font-weight: 500; font-size: 13px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+    .path-step-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+    .path-step-earn { font-size: 11px; color: #444; }
+
+    /* Video modal */
+    .video-modal { max-width: 680px; }
+    .video-modal-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 4px; }
+    .video-modal-sub { font-size: 13px; color: #666; margin-bottom: 1.25rem; }
+    .video-wrap { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; margin-bottom: 1.5rem; }
+    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .video-cta { width: 100%; text-align: center; display: block; }
+    @media (prefers-color-scheme: dark) { .video-modal-sub { color: #aaa; } }
+
+    /* Agency toggle */
+    .agency-btn { padding: 13px 20px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; text-align: left; transition: all 0.15s; border: 1.5px solid #e0ddd6; background: #f5f5f2; color: #1a1a1a; }
+    .agency-btn-yes:hover, .agency-btn-yes.active { background: #E6F1FB; border-color: #185FA5; color: #0C447C; font-weight: 500; }
+    .agency-btn-no:hover, .agency-btn-no.active { background: #f5f5f2; border-color: #bbb; color: #555; }
+    @media (prefers-color-scheme: dark) {
+      .agency-btn { background: #2a2a2a; border-color: #3a3a3a; color: #e8e8e8; }
+      .agency-btn-yes:hover, .agency-btn-yes.active { background: #1a3a5c; border-color: #378ADD; color: #B5D4F4; }
+      .agency-btn-no:hover, .agency-btn-no.active { background: #333; border-color: #555; color: #aaa; }
+    }
+
+    /* Dual calculator grid */
+    .calc-grid { display: flex; flex-direction: column; gap: 16px; margin-bottom: 2rem; }
+    .calc-label-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: #185FA5; background: #E6F1FB; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+    .agency-tag { color: #3B6D11; background: #EAF3DE; }
+    .calc-override-note { font-size: 12px; color: #888; margin-top: -4px; margin-bottom: 0.75rem; font-style: italic; }
+    .calc-card-agency .calc-result-val { color: #3B6D11; }
+    .agency-val { color: #3B6D11 !important; }
+    .calc-combined { margin-top: 1.25rem; background: #0C447C; border-radius: 8px; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; }
+    .calc-combined-label { font-size: 13px; color: #B5D4F4; }
+    .calc-combined-val { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: #FAC775; }
+
+    /* Calculator */
+    .calc-card { background: #fff; border: 1px solid #e0ddd6; border-radius: 16px; padding: 1.75rem; margin-bottom: 2rem; }
+    .calc-title { font-size: 15px; font-weight: 500; margin-bottom: 1.25rem; }
+    .calc-row { display: flex; align-items: center; gap: 14px; margin-bottom: 1rem; }
+    .calc-row label { font-size: 13px; color: #555; min-width: 140px; }
+    .calc-row input[type=range] { flex: 1; accent-color: #185FA5; cursor: pointer; }
+    .calc-row .val { font-size: 14px; font-weight: 500; min-width: 64px; text-align: right; }
+    .calc-result { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1.5rem; }
+    .calc-result-item { background: #f0ede6; border-radius: 8px; padding: 1rem 1.25rem; }
+    .calc-result-label { font-size: 11px; color: #444; margin-bottom: 4px; }
+    .calc-result-val { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #185FA5; }
+
+    /* Profile cards */
+    .profiles { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+    .profile-card { background: #fff; border: 1px solid #e0ddd6; border-radius: 14px; padding: 1.75rem 1.5rem; position: relative; }
+    .profile-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: #e8e6df; line-height: 1; margin-bottom: 0.75rem; }
+    .profile-title { font-size: 16px; font-weight: 500; margin-bottom: 0.65rem; color: #0C447C; }
+    .profile-desc { font-size: 13px; color: #333; line-height: 1.7; }
+    @media (max-width: 640px) { .profiles { grid-template-columns: 1fr; } }
+
+    /* Testimonials */
+    .testimonials { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-bottom: 2rem; }
+    .testi { background: #fff; border: 1px solid #e0ddd6; border-radius: 14px; padding: 1.25rem; }
+    .testi-quote { font-size: 13px; color: #444; line-height: 1.65; margin-bottom: 1rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-avatar { width: 34px; height: 34px; border-radius: 50%; background: #E6F1FB; color: #185FA5; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .testi-name { font-size: 13px; font-weight: 500; }
+    .testi-role { font-size: 11px; color: #777; }
+
+    /* Objections */
+    .objections { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .obj { border-left: 3px solid #185FA5; padding-left: 14px; }
+    .obj-q { font-size: 13px; font-weight: 500; margin-bottom: 5px; color: #1a1a1a; }
+    .obj-a { font-size: 12px; color: #333; line-height: 1.6; }
+
+    .badges { margin-bottom: 2rem; }
+    .badge { display: inline-block; background: #E6F1FB; color: #185FA5; font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 20px; margin-right: 6px; margin-bottom: 8px; }
+
+    /* Final CTA */
+    .final-cta { background: #0C447C; border-radius: 16px; padding: 3rem 2.5rem; text-align: center; color: #E6F1FB; }
+    .final-cta h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: #E6F1FB; margin-bottom: 0.75rem; }
+    .final-cta p { font-size: 14px; color: #B5D4F4; margin-bottom: 1.75rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+    .cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .cta-primary { background: #FAC775; color: #412402; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; padding: 14px 30px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .cta-primary:hover { background: #EF9F27; }
+    .cta-secondary { background: transparent; color: #B5D4F4; font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 14px 22px; border-radius: 8px; border: 1px solid #378ADD; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .cta-secondary:hover { background: rgba(55,138,221,0.15); }
+    .urgency { font-size: 12px; color: #85B7EB; margin-top: 14px; }
+    .urgency span { color: #FAC775; font-weight: 500; }
+
+    /* ── MODAL ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(4,28,53,0.75); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: #fff; border-radius: 16px; width: 100%; max-width: 540px; max-height: 90vh; overflow-y: auto; padding: 2.5rem 2rem; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 20px; color: #999; cursor: pointer; line-height: 1; }
+    .modal-close:hover { color: #333; }
+
+    .progress-wrap { margin-bottom: 2rem; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #888; margin-bottom: 8px; }
+    .progress-bar { height: 4px; background: #e8e6df; border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #185FA5; border-radius: 4px; transition: width 0.35s ease; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+
+    .step-question { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; }
+    .step-hint { font-size: 13px; color: #777; margin-bottom: 1.5rem; line-height: 1.5; }
+
+    .choices { display: flex; flex-direction: column; gap: 10px; }
+    .choice-btn { background: #f5f5f2; border: 1.5px solid #e0ddd6; border-radius: 10px; padding: 14px 16px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1a1a1a; cursor: pointer; text-align: left; transition: border-color 0.15s, background 0.15s; }
+    .choice-btn:hover { border-color: #185FA5; background: #eef4fa; }
+    .choice-btn.selected { border-color: #185FA5; background: #E6F1FB; color: #0C447C; font-weight: 500; }
+
+    .field-group { margin-bottom: 1rem; }
+    .field-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: #333; }
+    .field-group input, .field-group select { width: 100%; padding: 12px 14px; border: 1.5px solid #e0ddd6; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1a1a1a; background: #fff; outline: none; transition: border-color 0.15s; }
+    .field-group input:focus, .field-group select:focus { border-color: #185FA5; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .modal-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.75rem; gap: 12px; }
+    .btn-back { background: none; border: 1.5px solid #e0ddd6; border-radius: 8px; padding: 11px 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #555; cursor: pointer; transition: border-color 0.15s; }
+    .btn-back:hover { border-color: #999; }
+    .btn-next { background: #185FA5; color: #fff; border: none; border-radius: 8px; padding: 12px 28px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; margin-left: auto; transition: background 0.2s; }
+    .btn-next:hover { background: #0C447C; }
+
+    .error-msg { font-size: 12px; color: #c0392b; margin-top: 8px; display: none; }
+    .error-msg.show { display: block; }
+
+    .thankyou { text-align: center; padding: 1rem 0 0.5rem; }
+    .thankyou-icon { width: 56px; height: 56px; border-radius: 50%; background: #E6F1FB; color: #185FA5; font-size: 26px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+    .thankyou h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .thankyou p { font-size: 14px; color: #555; line-height: 1.65; max-width: 380px; margin: 0 auto 1.75rem; }
+    .thankyou-close { background: #185FA5; color: #fff; border: none; border-radius: 8px; padding: 12px 28px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #1a1a1a; color: #e8e8e8; }
+      .section-title { color: #f0f0f0; }
+      .section-sub { color: #aaa; }
+      .stat-card { background: #2a2a2a; border-color: #3a3a3a; }
+      .stat-label { color: #aaa; }
+      .path-step { background: #2a2a2a; border-color: #3a3a3a; }
+      .path-step-title { color: #e8e8e8; }
+      .path-step-earn { color: #aaa; }
+      .calc-card { background: #2a2a2a; border-color: #3a3a3a; }
+      .calc-title { color: #f0f0f0; }
+      .calc-row label { color: #bbb; }
+      .calc-row .val { color: #f0f0f0; }
+      .calc-result-item { background: #333; }
+      .calc-result-label { color: #aaa; }
+      .calc-override-note { color: #aaa; }
+      .profile-card { background: #2a2a2a; border-color: #3a3a3a; }
+      .profile-desc { color: #bbb; }
+      .obj-q { color: #f0f0f0; }
+      .obj-a { color: #bbb; }
+      .badge { background: #1a3a5c; color: #7ab8e8; }
+      .testi { background: #2a2a2a; border-color: #3a3a3a; }
+      .testi-quote { color: #bbb; }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.9rem; }
+      .stats-row { grid-template-columns: 1fr; }
+      .path-steps { grid-template-columns: repeat(2, 1fr); }
+      .path-step:first-child { border-radius: 8px 0 0 0; }
+      .path-step:nth-child(2) { border-radius: 0 8px 0 0; }
+      .path-step:nth-child(3) { border-radius: 0 0 0 8px; }
+      .path-step:last-child { border-radius: 0 0 8px 0; }
+      .testimonials { grid-template-columns: 1fr; }
+      .objections { grid-template-columns: 1fr; }
+      .calc-result { grid-template-columns: 1fr; }
+      .field-row { grid-template-columns: 1fr; }
+      .modal { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="lp-wrap">
+
+  <div class="hero">
+    <div class="hero-eyebrow">Optimize Financial — Build with us</div>
+    <h1>Build a career that <span>pays you forever.</span></h1>
+    <p class="hero-sub">You've already proven you can perform. Now it's time to do it for yourself. If you have the drive to build something that's truly yours, this is the platform, the products, and the market to make it happen.</p>
+    <button class="hero-cta" onclick="openModal()">Work with us →</button>
+    <p class="hero-note">Uncapped earning potential &nbsp;·&nbsp; Work from anywhere &nbsp;·&nbsp; Own your book of business</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num">$87K</div><div class="stat-label">Avg. agent income, year 1</div></div>
+    <div class="stat-card"><div class="stat-num">2 days</div><div class="stat-label">From sale to commission in your wallet</div></div>
+    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Commission — no salary cap</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Your career path</div>
+    <div class="section-sub">Most agents reach Team Leader within 18 months</div>
+    <div class="path-steps">
+      <div class="path-step"><div class="path-step-num">1</div><div class="path-step-title">New Agent</div><div class="path-step-earn">$150K–$250K / yr</div></div>
+      <div class="path-step"><div class="path-step-num">2</div><div class="path-step-title">Senior Agent</div><div class="path-step-earn">$250K–$400K+ / yr</div></div>
+      <div class="path-step"><div class="path-step-num">3</div><div class="path-step-title">Team Leader</div><div class="path-step-earn">$250K–$400K / yr</div></div>
+      <div class="path-step"><div class="path-step-num">4</div><div class="path-step-title">Agency Owner</div><div class="path-step-earn">$500K+ / yr</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Your earning potential</div>
+    <div class="section-sub">Run the numbers — personally and as an agency builder</div>
+  </div>
+
+  <div class="calc-grid">
+
+    <div class="calc-card">
+      <div class="calc-label-tag">Personal production</div>
+      <div class="calc-title">What can you write yourself?</div>
+      <div class="calc-row">
+        <label>Policies per week</label>
+        <input type="range" min="2" max="20" value="8" step="1" id="policies" oninput="calcIncome()" />
+        <span class="val" id="policies-out">8</span>
+      </div>
+      <div class="calc-row">
+        <label>Avg. premium / policy</label>
+        <input type="range" min="800" max="3000" value="1400" step="100" id="premium" oninput="calcIncome()" />
+        <span class="val" id="premium-out">$1,400</span>
+      </div>
+      <div class="calc-result">
+        <div class="calc-result-item"><div class="calc-result-label">Monthly income</div><div class="calc-result-val" id="monthly">$5,376</div></div>
+        <div class="calc-result-item"><div class="calc-result-label">Annual income</div><div class="calc-result-val" id="annual">$64,512</div></div>
+      </div>
+    </div>
+
+    <div class="calc-card calc-card-agency">
+      <div class="calc-label-tag agency-tag">Agency override</div>
+      <div class="calc-title">Are you looking to build an agency?</div>
+      <div class="agency-toggle">
+        <button class="agency-btn agency-btn-yes" onclick="showAgencyCalc()">Yes — show me the numbers</button>
+        <button class="agency-btn agency-btn-no" onclick="hideAgencyCalc()">No, just personal production for now</button>
+      </div>
+      <div id="agencyCalcWrap" style="display:none; margin-top:1.5rem;">
+        <div class="calc-row">
+          <label>Team monthly volume</label>
+          <input type="range" min="50000" max="5000000" value="50000" step="50000" id="teamVol" oninput="calcAgency()" />
+          <span class="val" id="teamVol-out">$50K</span>
+        </div>
+        <div class="calc-override-note">20% override on all team-written premium</div>
+        <div class="calc-result">
+          <div class="calc-result-item"><div class="calc-result-label">Monthly override</div><div class="calc-result-val agency-val" id="agencyMonthly">$10,000</div></div>
+          <div class="calc-result-item"><div class="calc-result-label">Annual override</div><div class="calc-result-val agency-val" id="agencyAnnual">$120,000</div></div>
+        </div>
+        <div class="calc-combined">
+          <div class="calc-combined-label">Combined annual income (personal + override)</div>
+          <div class="calc-combined-val" id="combined">$184,512</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section">
+    <div class="section-title">Who this is for</div>
+    <div class="section-sub">We work with people who are already winning</div>
+    <div class="profiles">
+      <div class="profile-card">
+        <div class="profile-num">01</div>
+        <div class="profile-title">The Producer</div>
+        <div class="profile-desc">You want to write more, earn more, and keep everything you make. You're done splitting commissions with a company that benefits more from your hustle than you do.</div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-num">02</div>
+        <div class="profile-title">The Builder</div>
+        <div class="profile-desc">You think in systems and teams. You want an organization beneath you generating override income around the clock — and you're willing to put in the work to create it.</div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-num">03</div>
+        <div class="profile-title">The Escapee</div>
+        <div class="profile-desc">You're done with corporate ceilings, manager approvals, and capped pay. You've outgrown where you are and you're ready to bet on yourself.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Common questions</div>
+    <div class="section-sub">Answered honestly</div>
+    <div class="objections">
+      <div class="obj"><div class="obj-q">Do I need to be licensed first?</div><div class="obj-a">No — we walk you through the entire process and provide study materials. Most agents complete their license in under 2 weeks for around $150.</div></div>
+      <div class="obj"><div class="obj-q">What does onboarding look like?</div><div class="obj-a">From day one you'll be paired with a mentor, given access to our training system, and walked through your first sales appointments. It's structured, fast, and built around getting you to your first commission quickly.</div></div>
+      <div class="obj"><div class="obj-q">How fast can I start earning?</div><div class="obj-a">Most agents write their first policy within the first two weeks. Commissions hit your account within 2 days of a submitted and approved application.</div></div>
+      <div class="obj"><div class="obj-q">Do I have to do this full-time?</div><div class="obj-a">Full-time is preferred — the agents who go all in see results fastest. That said, many start part-time and transition once their income replaces what they were making elsewhere.</div></div>
+    </div>
+  </div>
+
+  <div class="badges">
+    <span class="badge">Residual income that compounds</span>
+    <span class="badge">Work from anywhere</span>
+    <span class="badge">Own your book of business</span>
+    <span class="badge">Uncapped commissions</span>
+    <span class="badge">2-day commission payouts</span>
+    <span class="badge">Direct mentorship from top producers</span>
+  </div>
+
+  <div class="final-cta" id="apply">
+    <h2>Ready to take the call?</h2>
+    <p>Schedule a 15-minute intro call with a recruiter. No pressure, no pitch — just an honest conversation about whether this is the right fit.</p>
+    <div class="cta-group">
+      <button class="cta-primary" onclick="openModal()">Work with us →</button>
+      <button class="cta-secondary" onclick="openVideoModal()">What to expect</button>
+    </div>
+    <p class="urgency">Only <span>6 spots</span> remaining in our April training class</p>
+  </div>
+
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoOverlay" onclick="closeVideoModal(event)">
+  <div class="modal video-modal" id="videoBox">
+    <button class="modal-close" onclick="closeVideoModal()">&#x2715;</button>
+    <div class="video-modal-title">What to expect</div>
+    <div class="video-modal-sub">A quick overview of the opportunity and what the intro call looks like.</div>
+    <div class="video-wrap">
+      <iframe id="videoFrame" width="100%" height="100%" src="https://www.youtube.com/embed/mT2kX0nK4PI?si=HG6mBifYZi9i3ss-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <button class="cta-primary video-cta" onclick="closeVideoModal(); openModal()">Ready to work with us →</button>
+  </div>
+</div>
+<div class="modal-overlay" id="modalOverlay" onclick="overlayClick(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-label">
+        <span id="stepLabel">Step 1 of 5</span>
+        <span id="stepPct">20%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+    </div>
+
+    <!-- Step 1: Licensed? -->
+    <div class="step active" id="step1">
+      <div class="step-question">Do you currently hold a life insurance license?</div>
+      <div class="step-hint">Don't worry if you don't — most of our top agents started without one.</div>
+      <div class="choices">
+        <button class="choice-btn" onclick="selectChoice(this,'1')">Yes — I'm already licensed</button>
+        <button class="choice-btn" onclick="selectChoice(this,'1')">No, but I'm willing to get licensed</button>
+        <button class="choice-btn" onclick="selectChoice(this,'1')">No, and I'm not sure yet</button>
+      </div>
+      <div class="error-msg" id="err1">Please select an option to continue.</div>
+      <div class="modal-nav">
+        <button class="btn-next" onclick="nextStep(1)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Work background -->
+    <div class="step" id="step2">
+      <div class="step-question">What best describes your work background?</div>
+      <div class="step-hint">This helps us tailor your onboarding — all backgrounds are welcome.</div>
+      <div class="choices">
+        <button class="choice-btn" onclick="selectChoice(this,'2')">Sales or business development</button>
+        <button class="choice-btn" onclick="selectChoice(this,'2')">Financial services or banking</button>
+        <button class="choice-btn" onclick="selectChoice(this,'2')">Education, healthcare, or government</button>
+        <button class="choice-btn" onclick="selectChoice(this,'2')">Military or law enforcement</button>
+        <button class="choice-btn" onclick="selectChoice(this,'2')">Other / no specific industry</button>
+      </div>
+      <div class="error-msg" id="err2">Please select an option to continue.</div>
+      <div class="modal-nav">
+        <button class="btn-back" onclick="prevStep(2)">← Back</button>
+        <button class="btn-next" onclick="nextStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Sales experience -->
+    <div class="step" id="step3">
+      <div class="step-question">How much sales or client-facing experience do you have?</div>
+      <div class="step-hint">Zero is completely fine — this just helps us calibrate your training.</div>
+      <div class="choices">
+        <button class="choice-btn" onclick="selectChoice(this,'3')">None — I've never worked in sales</button>
+        <button class="choice-btn" onclick="selectChoice(this,'3')">Some — less than 2 years</button>
+        <button class="choice-btn" onclick="selectChoice(this,'3')">Experienced — 2 to 5 years</button>
+        <button class="choice-btn" onclick="selectChoice(this,'3')">Veteran — 5+ years in sales</button>
+      </div>
+      <div class="error-msg" id="err3">Please select an option to continue.</div>
+      <div class="modal-nav">
+        <button class="btn-back" onclick="prevStep(3)">← Back</button>
+        <button class="btn-next" onclick="nextStep(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Availability -->
+    <div class="step" id="step4">
+      <div class="step-question">How are you looking to start?</div>
+      <div class="step-hint">Many agents begin part-time before transitioning once income replaces their salary.</div>
+      <div class="choices">
+        <button class="choice-btn" onclick="selectChoice(this,'4')">Full-time — I'm ready to go all in</button>
+        <button class="choice-btn" onclick="selectChoice(this,'4')">Part-time first, full-time once I'm earning</button>
+        <button class="choice-btn" onclick="selectChoice(this,'4')">Just exploring for now</button>
+      </div>
+      <div class="error-msg" id="err4">Please select an option to continue.</div>
+      <div class="modal-nav">
+        <button class="btn-back" onclick="prevStep(4)">← Back</button>
+        <button class="btn-next" onclick="nextStep(4)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Income goal -->
+    <div class="step" id="step5">
+      <div class="step-question">What's your income goal in your first year?</div>
+      <div class="step-hint">This helps your recruiter understand what success looks like for you personally.</div>
+      <div class="choices">
+        <button class="choice-btn" onclick="selectChoice(this,'5')">Supplemental — $20K–$40K on the side</button>
+        <button class="choice-btn" onclick="selectChoice(this,'5')">Replace my income — $40K–$80K</button>
+        <button class="choice-btn" onclick="selectChoice(this,'5')">Exceed my income — $80K–$120K</button>
+        <button class="choice-btn" onclick="selectChoice(this,'5')">Go big — $120K+</button>
+      </div>
+      <div class="error-msg" id="err5">Please select an option to continue.</div>
+      <div class="modal-nav">
+        <button class="btn-back" onclick="prevStep(5)">← Back</button>
+        <button class="btn-next" onclick="nextStep(5)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 6: Contact info -->
+    <div class="step" id="step6">
+      <div class="step-question">Great — you look like a strong fit.</div>
+      <div class="step-hint">A recruiter will reach out within one business day to schedule your 15-minute intro call.</div>
+      <div class="field-row">
+        <div class="field-group"><label>First name</label><input type="text" id="fname" placeholder="Jane" /></div>
+        <div class="field-group"><label>Last name</label><input type="text" id="lname" placeholder="Smith" /></div>
+      </div>
+      <div class="field-group"><label>Phone number</label><input type="tel" id="phone" placeholder="(555) 000-0000" /></div>
+      <div class="field-group"><label>Email address</label><input type="email" id="email" placeholder="jane@email.com" /></div>
+      <div class="field-group">
+        <label>Resident state</label>
+        <select id="state">
+          <option value="">Select your state...</option>
+          <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+        </select>
+      </div>
+      <div class="error-msg" id="err6">Please fill in all fields before submitting.</div>
+      <div class="modal-nav">
+        <button class="btn-back" onclick="prevStep(6)">← Back</button>
+        <button class="btn-next" onclick="submitForm()">Submit my application →</button>
+      </div>
+    </div>
+
+    <!-- Thank you -->
+    <div class="step" id="stepThanks">
+      <div class="thankyou">
+        <div class="thankyou-icon">&#10003;</div>
+        <h2>You're in the queue!</h2>
+        <p>Thanks for applying. A recruiter from Optimize Financial will reach out within one business day to schedule your intro call.</p>
+        <button class="thankyou-close" onclick="closeModal()">Done</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function openVideoModal() {
+    document.getElementById('videoOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoModal(e) {
+    if (e && e.target !== document.getElementById('videoOverlay') && e.type === 'click') return;
+    document.getElementById('videoOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    const frame = document.getElementById('videoFrame');
+    frame.src = frame.src;
+  }
+
+  function showAgencyCalc() {
+    document.getElementById('agencyCalcWrap').style.display = 'block';
+    document.querySelector('.agency-btn-yes').classList.add('active');
+    document.querySelector('.agency-btn-no').classList.remove('active');
+    calcAgency();
+  }
+
+  function hideAgencyCalc() {
+    document.getElementById('agencyCalcWrap').style.display = 'none';
+    document.querySelector('.agency-btn-no').classList.add('active');
+    document.querySelector('.agency-btn-yes').classList.remove('active');
+  }
+
+  function calcIncome() {
+    const policies = parseInt(document.getElementById('policies').value);
+    const premium = parseInt(document.getElementById('premium').value);
+    document.getElementById('policies-out').textContent = policies;
+    document.getElementById('premium-out').textContent = '$' + premium.toLocaleString();
+    const monthly = Math.round(policies * premium * 0.60 * 4.33);
+    const annual = monthly * 12;
+    document.getElementById('monthly').textContent = '$' + monthly.toLocaleString();
+    document.getElementById('annual').textContent = '$' + annual.toLocaleString();
+    updateCombined();
+  }
+
+  function calcAgency() {
+    const monthlyVol = parseInt(document.getElementById('teamVol').value);
+    const label = monthlyVol >= 1000000 ? ('$' + (monthlyVol/1000000).toFixed(1) + 'M') : ('$' + (monthlyVol/1000).toFixed(0) + 'K');
+    document.getElementById('teamVol-out').textContent = label;
+    const monthlyOverride = Math.round(monthlyVol * 0.20);
+    const annualOverride = monthlyOverride * 12;
+    document.getElementById('agencyMonthly').textContent = '$' + monthlyOverride.toLocaleString();
+    document.getElementById('agencyAnnual').textContent = '$' + annualOverride.toLocaleString();
+    updateCombined();
+  }
+
+  function updateCombined() {
+    const policies = parseInt(document.getElementById('policies').value);
+    const premium = parseInt(document.getElementById('premium').value);
+    const personalAnnual = Math.round(policies * premium * 0.60 * 4.33) * 12;
+    const monthlyVol = parseInt(document.getElementById('teamVol').value);
+    const agencyAnnual = Math.round(monthlyVol * 0.20) * 12;
+    document.getElementById('combined').textContent = '$' + (personalAnnual + agencyAnnual).toLocaleString();
+  }
+
+  calcIncome();
+  calcAgency();
+
+  const TOTAL_STEPS = 5;
+  let currentStep = 1;
+
+  function openModal() {
+    currentStep = 1;
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('step1').classList.add('active');
+    document.getElementById('progressWrap').style.display = 'block';
+    updateProgress(1);
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function overlayClick(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  function showStep(n) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    const el = n === 'Thanks' ? document.getElementById('stepThanks') : document.getElementById('step' + n);
+    if (el) el.classList.add('active');
+    document.getElementById('modalBox').scrollTop = 0;
+  }
+
+  function updateProgress(step) {
+    const pct = Math.round((step / TOTAL_STEPS) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('stepPct').textContent = pct + '%';
+    document.getElementById('stepLabel').textContent = step <= TOTAL_STEPS ? ('Step ' + step + ' of ' + TOTAL_STEPS) : 'Almost done!';
+  }
+
+  function selectChoice(btn, stepNum) {
+    btn.closest('.choices').querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('err' + stepNum).classList.remove('show');
+  }
+
+  function hasSelection(stepNum) {
+    return Array.from(document.querySelectorAll('#step' + stepNum + ' .choice-btn')).some(b => b.classList.contains('selected'));
+  }
+
+  function nextStep(current) {
+    if (!hasSelection(current)) { document.getElementById('err' + current).classList.add('show'); return; }
+    document.getElementById('err' + current).classList.remove('show');
+    currentStep = current + 1;
+    showStep(currentStep);
+    updateProgress(currentStep);
+  }
+
+  function prevStep(current) {
+    currentStep = current - 1;
+    showStep(currentStep);
+    updateProgress(currentStep);
+  }
+
+  function submitForm() {
+    const fname = document.getElementById('fname').value.trim();
+    const lname = document.getElementById('lname').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const state = document.getElementById('state').value;
+    const err = document.getElementById('err6');
+    if (!fname || !lname || !phone || !email || !state) { err.textContent = 'Please fill in all fields before submitting.'; err.classList.add('show'); return; }
+    if (!email.includes('@') || !email.includes('.')) { err.textContent = 'Please enter a valid email address.'; err.classList.add('show'); return; }
+    err.classList.remove('show');
+    document.getElementById('progressWrap').style.display = 'none';
+    showStep('Thanks');
+  }
+</script>
+</body>
+</html>
